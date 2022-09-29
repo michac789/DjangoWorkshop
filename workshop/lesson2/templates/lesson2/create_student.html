@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Add New Student Page
+    </h1>
+    <form action="{% url 'lesson2:create_student' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div>
+            {{ form.age.label_tag }}
+            {{ form.age }}
+        </div>
+        <div>
+            {{ form.course.label_tag }}
+            {{ form.course }}
+        </div>
+        <div>
+            {{ form.education.label_tag }}
+            {{ form.education }}
+        </div>
+        <div>
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
+        </div>
+        <button type="submit">
+            Submit
+        </button>
+    </form>
+
+    <a href="{% url 'lesson2:index' %}">
+        Back to index page
+    </a>
+</body>
+</html>
