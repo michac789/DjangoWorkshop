@@ -7,7 +7,9 @@ valid_lessons = [
 
 
 def index(request):
-    return render(request, "lesson/index.html")
+    return render(request, "lesson/index.html", {
+        "lessons": valid_lessons,
+    })
 
 
 def view_lesson(request, lesson_name):
