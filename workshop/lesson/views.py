@@ -17,3 +17,7 @@ def view_lesson(request, lesson_name):
         "title": lesson_name.capitalize(),
         "valid": lesson_name in valid_lessons,
     })
+
+
+def create_lesson(request):
+    return render(request, "lesson/create.html")

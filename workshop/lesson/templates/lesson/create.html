@@ -7,15 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    {% if valid %}
-        <h1>
-            {{ title }} Lesson
-        </h1>
-    {% else %}
-        <h3>
-            Error! The lesson '{{ title }}' is invalid!
-        </h3>
-    {% endif %}
+    <h1>
+        Lesson Create Page
+    </h1>
     <a href="{% url 'lesson:index' %}">
         Back to lesson list
     </a>
