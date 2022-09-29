@@ -10,12 +10,19 @@
     <h1>
         Lesson Index Page
     </h1>
+    <h3>
+        Showing {{ lessons|length }} lessons:
+    </h3>
     <ul>
         {% for lesson in lessons %}
             <li>
-                {{ lesson }}
+                {{ lesson|capfirst|linebreaks }}
             </li>
         {% endfor %}
     </ul>
+    <h5>
+        Another example of filter that takes in argument:
+        {{ 2|add:7 }}
+    </h5>
 </body>
 </html>
