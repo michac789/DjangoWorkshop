@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 valid_lessons = [
@@ -20,4 +20,9 @@ def view_lesson(request, lesson_name):
 
 
 def create_lesson(request):
-    return render(request, "lesson/create.html")
+    if request.method == "POST":
+        new_lesson = request.POST["lesson_name"]
+        valid_lessons.append(new_lesson)
+        return redirect("lesson:index")
+    else:
+        return render(request, "lesson/create.html")

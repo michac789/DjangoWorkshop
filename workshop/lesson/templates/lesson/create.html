@@ -4,6 +4,13 @@
     <h1>
         Lesson Create Page
     </h1>
+    <form action="{% url 'lesson:create' %}" method="POST">
+        {% csrf_token %}
+        Lesson Name: <input type="text" name="lesson_name">
+        <button type="submit">
+            Add Lesson
+        </button>
+    </form>
     <a href="{% url 'lesson:index' %}">
         Back to lesson list
     </a>
