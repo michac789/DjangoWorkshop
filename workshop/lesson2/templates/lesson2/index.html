@@ -10,6 +10,40 @@
     <h1>
         Lesson2 Index Page
     </h1>
-    TODO
+
+    <h3>
+        All Lessons
+    </h3>
+    <ol>
+        {% for lesson in lessons %}
+        <li>
+            <ul>
+                <li>ID: {{ lesson.id }}</li>
+                <li>{{ lesson.title|capfirst }} Lesson</li>
+                <li>
+                    Students:
+                    {% for student in lesson.students.all %}
+                        {{ student.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        -
+                    {% endfor %}
+                </li>
+            </ul>
+        </li><br>
+        {% empty %}
+            No lessons found.
+        {% endfor %}
+    </ol>
+
+    <h3>
+        All Students
+    </h3>
+    <ul>
+        {% for student in students %}
+        <li>
+            {{ student.name }}
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
