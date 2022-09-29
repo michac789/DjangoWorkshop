@@ -1,7 +1,13 @@
 {% extends 'lesson/root.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lesson/index.css' %}">
+    <script src="{% static 'lesson/index.js' %}"></script>
+{% endblock head %}
 
 {% block body %}
-    <h1>
+    <h1 class="title">
         Lesson Index Page
     </h1>
     <h3>
@@ -23,4 +29,5 @@
         Another example of filter that takes in argument:
         {{ 2|add:7 }}
     </h5>
+    <img src="{% static 'lesson/sample.png' %}">
 {% endblock body %}

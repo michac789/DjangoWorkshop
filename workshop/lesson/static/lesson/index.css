@@ -1,0 +1,10 @@
+.title {
+    color: midnightblue;
+    text-decoration: underline;
+    margin: 0.5em;
+}
+
+ul a li:hover {
+    background-color: #7fffd4;
+    transition: 0.5s;
+}
