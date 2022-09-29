@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     "myfirstapp",
     "lesson",
+    "lesson2",
 ]
 
 MIDDLEWARE = [
