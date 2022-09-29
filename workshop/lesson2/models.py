@@ -1,9 +1,10 @@
 from django.db import models
+from django.core.validators import MaxLengthValidator, MinValueValidator, MaxValueValidator
 
 
 class Lesson(models.Model):
     title = models.CharField(max_length=30)
-    content = models.TextField()
+    content = models.TextField(validators=[MaxLengthValidator(1000)])
     
     def __str__(self):
         return f"ID {self.id}: {self.title.capitalize()} Lesson"
@@ -11,7 +12,9 @@ class Lesson(models.Model):
 
 class Student(models.Model):
     name = models.CharField(max_length=40)
-    age = models.IntegerField()
+    age = models.IntegerField(validators=[
+        MinValueValidator(1), MaxValueValidator(100)
+    ])
     course = models.ForeignKey(
         Lesson,
         # one student can only take 1 lesson, 
@@ -23,6 +26,15 @@ class Student(models.Model):
         # you can access the students correlated through the lessons object
         # the reverse accessor: <LessonObject>.<related_name>.all()
     )
+    register_time = models.DateTimeField(auto_now=True)
+    
+    EDUCATION_OPTIONS = [
+        ("PR", "Primary"),
+        ("SE", "Secondary"),
+        ("JC", "Junior College"),
+        ("UN", "University")
+    ]
+    education = models.CharField(choices=EDUCATION_OPTIONS, max_length=2, null=True)
     
     def __str__(self):
         return f"Student ID {self.id}: {self.name}"
