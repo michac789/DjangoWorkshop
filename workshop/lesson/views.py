@@ -2,13 +2,18 @@ from django.shortcuts import render, redirect
 
 
 valid_lessons = [
-    "math", "english", "physics"
+    "math", "english", "physics", "chemistry", "biology",
 ]
 
 
 def index(request):
+    # handle query parameter (if ?sort=true -> sort the lessons before displaying)
+    lessons = valid_lessons
+    if 'sort' in request.GET and request.GET["sort"] == "true":
+        lessons = sorted(valid_lessons)
+    
     return render(request, "lesson/index.html", {
-        "lessons": valid_lessons,
+        "lessons": lessons,
     })
 
 

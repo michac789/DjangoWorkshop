@@ -10,8 +10,26 @@
     <h1 class="title">
         Lesson Index Page
     </h1>
+    <form action="{% url 'lesson:index' %}" method="GET">
+        {% if request.GET.sort == "true" %}
+            <input type="hidden" name="sort" value="false">
+            <button type="submit">
+                Unsort Lessons
+            </button>
+        {% else %}
+            <input type="hidden" name="sort" value="true">
+            <button type="submit">
+                Sort Lessons
+            </button>
+        {% endif %}
+    </form>
     <h3>
         Showing {{ lessons|length }} lessons:
+        {% if request.GET.sort == "true" %}
+            (sorted order)
+        {% else %}
+            (original order)
+        {% endif %}
     </h3>
     <ul>
         {% for lesson in lessons %}
