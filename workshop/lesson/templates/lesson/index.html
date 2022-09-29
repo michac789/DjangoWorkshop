@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'lesson/root.html' %}
+
+{% block body %}
     <h1>
         Lesson Index Page
     </h1>
@@ -29,5 +23,4 @@
         Another example of filter that takes in argument:
         {{ 2|add:7 }}
     </h5>
-</body>
-</html>
+{% endblock body %}
