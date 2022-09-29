@@ -22,7 +22,19 @@ def view_lesson(request, lesson_name):
 def create_lesson(request):
     if request.method == "POST":
         new_lesson = request.POST["lesson_name"]
-        valid_lessons.append(new_lesson)
+
+        # simple manual error checking, rerender form and show error message if any
+        error = None
+        if len(new_lesson.strip().lower()) == 0:
+            error = "Lesson name cannot be empty!"
+        if new_lesson.strip().lower() in valid_lessons:
+            error = "No duplicate lessons are allowed!"
+        if error:
+            return render(request, "lesson/create.html", {
+                "error": error,
+            })
+        
+        valid_lessons.append(new_lesson.strip().lower())
         return redirect("lesson:index")
     else:
         return render(request, "lesson/create.html")

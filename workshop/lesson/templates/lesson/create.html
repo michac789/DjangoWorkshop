@@ -11,6 +11,11 @@
             Add Lesson
         </button>
     </form>
+    {% if error %}
+        <h4>            
+            Error! {{ error }} <br>
+        </h4>
+    {% endif %}
     <a href="{% url 'lesson:index' %}">
         Back to lesson list
     </a>
